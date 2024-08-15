@@ -1,59 +1,72 @@
-# ILT FEBE 2024
-
-Repository ini dikhususkan untuk para instruktur ILT. Lakukanlah fork jika ingin melakukan perubahan kode dan memberikannya ke para siswa.
+# ILT-1 Buat Website Pertamamu
 
 ## Pengantar
 
-Selamat datang di ILT Hands-on Deck!
+ILT 1 akan mengangkat materi tentang HTML dan CSS. Oleh karena itu, pengembangan aplikasi Calm Headphones akan diawali dengan membangun kerangka dan styling-nya.
 
-Repository ini menyimpan seluruh kebutuhan Hands-on demo dalam sesi ILT. Studi kasus yang diangkat dalam Hands-on demo adalah **Calm Headphones**. Ia adalah aplikasi yang menyediakan layanan untuk meningkatkan produktivitas dan fokus dalam bermeditasi.
+## Petunjuk
 
-Topik Calm Headphones akan selalu digunakan dari satu ILT ke ILT berikutnya. Oleh karena itu, kami pisahkan kemajuan aplikasi dalam branch terpisah.
+Branch repository ini mengandung dua direktori yang bersifat starter dan solution project. Sebagai pembuka sesi hands-on demo, instruktur dipersilakan untuk memanfaatkan project dalam direktori `starter`.
 
-## Daftar ILT
+## Hasil Akhir Proyek
 
-Berikut adalah daftar topik hands-on yang akan diangkat per ILT.
+Hasil akhir dari kegiatan hands-on demo akan terlihat seperti berikut.
 
-### ILT-1 Buat Website Pertamamu
+### Versi Desktop
 
-Pengembangan Calm Headphones Landing Page menggunakan HTML dan CSS. Pengembangan layout-nya yang responsif akan melibatkan Flexible Box Layout atau flexbox.
+![Calm Headphone in desktop version](design-concept-desktop.png?raw=true)
 
-Berikut gambaran hasil akhirnya.
+### Versi Mobile
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/01-html-css) untuk menuju ke branch terkait.
+![Calm Headphone in mobile version](design-concept-mobile.png?raw=true)
 
-### ILT-2 Membuat Websitemu Lebih Interaktif
+## Konten (HTML)
 
-Dalam tahap ini, aplikasi Calm Headphones menjadi interatif dengan menambahkan JavaScript dan DOM manipulation di dalamnya.
+Beberapa kebutuhan konten landing page dapat dilihat pada poin-poin berikut.
 
-Berikut gambaran hasil akhirnya.
+### Header Content
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/02-dom-manipulation-event) untuk menuju ke branch terkait.
+- Logo: `assets/images/calm-logo.png`
+- Navigation:
+  - Blog: `#blog`
+  - Calm Playlist: `#playlist`
+  - Join Calm: `#join`
 
-### ILT-3 Berkomunikasi dengan RESTful API
+### Main Content
 
-ILT ini mengangkat topik Asynchronous JavaScript Request atau AJAX. Aplikasi Calm Headphones akan dihubungkan dengan server untuk mendapatkan data dari web server.
+- Heading 1: `Be Focus and Productive`
+- Paragraph: `Not just an ordinary headphones. It's designed for meditation.`
+- Button: `Learn More`
+- Hero Image: `assets/images/calm-hero.png`
 
-Berikut gambaran hasil akhirnya.
+## Styling (CSS)
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/03-async-javascript-request) untuk menuju ke branch terkait.
+### Color Pallete
 
-### ILT-4 Selangkah Lebih Maju dengan PWA
+- black: `#000000`
+- white: `#ffffff`
+- dark: `#141E16`
+- accent: `#3B855B`
 
-Untuk meningkatkan pengalaman pengguna, aplikasi Calm Headphones akan menerapkan Progressive Web App (PWA).
+### Font Type and Size
 
-Berikut gambaran hasil akhirnya.
+- Font Type:
+  - Type: Inter
+  - Link: [Inter Google Font](https://fonts.google.com/specimen/Inter?preview.text=This%20is%20a%20great%20font%20to%20use%3F&preview.text_type=custom)
+- Font Size:
+  - Navigation: 16px
+  - Heading 1: 64px desktop, 48px mobile
+  - Paragraph: 18px
+  - Button: 18px
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/04-progressive-web-app) untuk menuju ke branch terkait.
+## Checklist Live Demo
 
-### ILT-5 Menguji Aplikasi Web
+Instruktur dapat memanfaatkan checklist live demo berikut agar sesi hands-on lebih terstruktur.
 
-Potensi bug dan error bisa saja terjadi pada aplikasi apa pun. Oleh karena itu, pengujian aplikasi perlu dilaksanakan dalam tahap pengembangannya. Ada beberapa metode pengujian dan Calm Headphones akan menggunakan cara otomatis atau **Automated Testing**.
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/05-automated-testing) untuk menuju ke branch terkait.
-
-### ILT-6 JavaScript untuk Pengembangan di Sisi Server
-
-......
+- [ ] Menyiapkan resource project seperti gambar.
+- [ ] Membangun kerangka halaman web menggunakan HTML.
+  - [ ] Mengenalkan semantic HTML seperti `<header>` ,`<nav>`, `<main>`, `<footer>`, `<article>`, dll.
+  - [ ] Menggunakan `<a>` menampilkan link navigasi.
+  - [ ] Menggunakan `<img>` untuk menampilkan gambar.
+- [ ] Menerapkan styling terhadap kerangka yang dibangun.
+- [ ] Menerapkan layout responsive dengan Flexbox.
