@@ -47,16 +47,12 @@ function setupOnlyOneAudioIsPlaying() {
 }
 
 function populateWithTemplate(musics) {
-  const elements = musics.reduce((accumulator, currentValue) => {
-    return [...accumulator, generateMusicItemUsingTemplate(currentValue)];
-  }, []);
+  const elements = musics.map(generateMusicItemUsingTemplate);
   musicListContainer.append(...elements);
 }
 
 function populateWithInnerHTML(musics) {
-  const elements = musics.reduce((accumulator, currentValue) => {
-    return [...accumulator, generateMusicItemUsingInnerHTML(currentValue)];
-  }, []);
+  const elements = musics.map(generateMusicItemUsingInnerHTML);
   musicListContainer.innerHTML = elements.join('');
 }
 
