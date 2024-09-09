@@ -1,59 +1,38 @@
-# ILT FEBE 2024
-
-Repository ini dikhususkan untuk para instruktur ILT. Lakukanlah fork jika ingin melakukan perubahan kode dan memberikannya ke para siswa.
+# ILT Berkomunikasi dengan RESTful API
 
 ## Pengantar
 
-Selamat datang di ILT Hands-on Deck!
+Studi kasus ini ditujukan untuk ILT dengan materi Asynchronous JavaScript Request. Ini adalah studi kasus lanjutan dari ILT DOM manipulation dengan event (interactivity).
 
-Repository ini menyimpan seluruh kebutuhan Hands-on demo dalam sesi ILT. Studi kasus yang diangkat dalam Hands-on demo adalah **Calm Headphones**. Ia adalah aplikasi yang menyediakan layanan untuk meningkatkan produktivitas dan fokus dalam bermeditasi.
+Hands-on kali ini berfokus pada penyediaan productive musics dari API (Server).
 
-Topik Calm Headphones akan selalu digunakan dari satu ILT ke ILT berikutnya. Oleh karena itu, kami pisahkan kemajuan aplikasi dalam branch terpisah.
+## Petunjuk
 
-## Daftar ILT
+Branch repository ini mengandung dua direktori yang bersifat starter dan solution project. Sebagai pembuka sesi hands-on demo, instruktur dipersilakan untuk memanfaatkan project dalam direktori `starter`.
 
-Berikut adalah daftar topik hands-on yang akan diangkat per ILT.
+## Hasil Akhir Proyek
 
-### ILT-1 Buat Website Pertamamu
+Hasil akhir dari kegiatan hands-on demo akan terlihat seperti berikut.
 
-Pengembangan Calm Headphones Landing Page menggunakan HTML dan CSS. Pengembangan layout-nya yang responsif akan melibatkan Flexible Box Layout atau flexbox.
+![Calm Headphones](calm-headphones-final.png?raw=true)
 
-Berikut gambaran hasil akhirnya.
+![Network DevTools in Calm Headphones](calm-headphones-network-devtools.png?raw=true)
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/01-html-css) untuk menuju ke branch terkait.
+## Menampilkan Data dari Musics API
 
-### ILT-2 Membuat Websitemu Lebih Interaktif
+Untuk menyediakan music secara online, kita memerlukan API yang menyediakan data tersebut. Kami telah menyediakan API untuk hands-on ini bernama Calm Music API. Instruktur bisa menggunakan dokumentasi berikut.
 
-Dalam tahap ini, aplikasi Calm Headphones menjadi interatif dengan menambahkan JavaScript dan DOM manipulation di dalamnya.
+> [https://calm-music-api.dicoding.dev](https://calm-music-api.dicoding.dev/#/)
 
-Berikut gambaran hasil akhirnya.
+## Checklist Live Demo
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/02-dom-manipulation-event) untuk menuju ke branch terkait.
+Instruktur dapat memanfaatkan checklist live demo berikut agar sesi hands-on lebih terstruktur.
 
-### ILT-3 Berkomunikasi dengan RESTful API
-
-ILT ini mengangkat topik Asynchronous JavaScript Request atau AJAX. Aplikasi Calm Headphones akan dihubungkan dengan server untuk mendapatkan data dari web server.
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/03-async-javascript-request) untuk menuju ke branch terkait.
-
-### ILT-4 Selangkah Lebih Maju dengan PWA
-
-Untuk meningkatkan pengalaman pengguna, aplikasi Calm Headphones akan menerapkan Progressive Web App (PWA).
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/04-progressive-web-app) untuk menuju ke branch terkait.
-
-### ILT-5 Menguji Aplikasi Web
-
-Potensi bug dan error bisa saja terjadi pada aplikasi apa pun. Oleh karena itu, pengujian aplikasi perlu dilaksanakan dalam tahap pengembangannya. Ada beberapa metode pengujian dan Calm Headphones akan menggunakan cara otomatis atau **Automated Testing**.
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/05-automated-testing) untuk menuju ke branch terkait.
-
-### ILT-6 JavaScript untuk Pengembangan di Sisi Server
-
-......
+- [ ] Menyiapkan starter project yang telah disediakan.
+- [ ] Menjalankan proyek dengan local server. Bisa menggunakan [http-server](https://www.npmjs.com/package/http-server) atau [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) bagi pengguna VS Code.
+- [ ] Melakukan bedah kode secara cepat dan memahami praktik simulasi indikator loading.
+- [ ] Menyusun kebutuhan Music API untuk membuat HTTP request pada `scripts/api.js`.
+- [ ] Membuat HTTP request untuk Music API.
+  - [ ] Memanfaatkan chaining method `then()`.
+  - [ ] Memanfaatkan fitur `async/await`.
+- [ ] Mengatur agar dua atau lebih audio tidak dimainkan secara serentak (memanfaatkan event `play`).

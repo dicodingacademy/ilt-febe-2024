@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Calm Headphones</title>
+
+    <!-- Own Styles -->
+    <link rel="stylesheet" href="assets/styles/style.css" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Own Scripts -->
+    <script type="module" src="assets/scripts/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container" role="banner">
+        <div class="header-content">
+          <div class="brand-name">
+            <a href="/" aria-label="Calm Headphones">
+              <img src="assets/images/calm-logo.png" alt="Calm headphones logo" />
+            </a>
+          </div>
+
+          <nav id="main-nav">
+            <ul id="navList" class="navlist">
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#playlist">Calm Playlist</a></li>
+              <li><a href="#join">Join Calm</a></li>
+            </ul>
+          </nav>
+
+          <button id="drawer-button" class="drawer-button">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="main-content container" role="main">
+        <section class="hero">
+          <article class="hero__content">
+            <h2>Be Focus and Productive</h2>
+            <p>Not just an ordinary headphones. It's designed for meditation.</p>
+            <button>Learn more</button>
+          </article>
+
+          <article class="hero__image">
+            <img src="assets/images/calm-hero.png" alt="A man wearing calm headphones" />
+          </article>
+        </section>
+
+        <section>
+          <h2 class="section-title">Choose Your Productive Music Favorite</h2>
+
+          <div id="musicList" class="music-list"></div>
+          <div id="loader" class="text-center">
+            <span class="loader"></span>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container" role="contentinfo">
+        <p class="copyright">&copy; Copyright 2024</p>
+      </div>
+    </footer>
+
+    <!-- 
+    See: <template>: The Content Template element
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
+    -->
+    <template id="musicitemtemplate">
+      <article class="music-list__item" data-musicid="AUDIO_ID">
+        <div class="card">
+          <div class="card-image">
+            <img id="musicImage" src="https://your-audio.com/01/arts.jpg" alt="AUDIO TITLE" />
+          </div>
+          <div class="card-body">
+            <h3 id="musicTitle" class="card-body__title">AUDIO TITLE</h3>
+            <div id="musicSignature" class="card-body__copyright">AUDIO SIGNATURE</div>
+            <audio
+              id="musicAudio"
+              class="music-list__item__audio"
+              controls
+              src="https://your-audio.com/01/audio.mp3"
+              type="audio/mp3"
+              preload="none"
+            ></audio>
+          </div>
+        </div>
+      </article>
+    </template>
+  </body>
+</html>
