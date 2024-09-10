@@ -105,10 +105,10 @@ async function usingAsyncAwait() {
 
   try {
     // Get from API
-    const musicResponse = await getAllMusics();
+    const musics = await getAllMusics();
 
     // Render musics to page
-    populateWithTemplate(musicResponse.musics);
+    populateWithTemplate(musics);
   } catch (error) {
     console.error('Something went error:', error);
   } finally {
