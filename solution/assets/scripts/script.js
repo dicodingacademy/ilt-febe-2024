@@ -71,8 +71,15 @@ function usingChainingPromise() {
 }
 
 /**
- * Promise benar-benar mencegah penulisan kode asinkron dari callback hell.
- * Namun, cara berikut tidak berbeda dengan callback hell karena kode berpotensi menjorok ke dalam.
+ * Hindari penulisan kode seperti ini.
+ * Beberapa hal buruk ketika menerapkan kode seperti ini:
+ * 1. Fungsi memiliki lebih dari satu tanggung jawab, mendapatkan data dari network dan me-render data ke DOM.
+ * 2. Fungsi akan sulit diuji secara otomatis.
+ * 3. Sulit untuk dibaca. Tidak berebda dengan callback-hell karena berpontensi menjorok ke dalam.
+ * 
+ * Solusi:
+ * Buat fungsi untuk mendapatkan musics dari API secara terpisah.
+ * 
  */
 function usingChainingPromiseInWrongWay() {
   showLoading();
