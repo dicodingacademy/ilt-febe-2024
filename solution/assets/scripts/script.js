@@ -62,7 +62,7 @@ function usingChainingPromise() {
   showLoading();
 
   // Get from API
-  fetch(ENDPOINTS.list)
+  return fetch(ENDPOINTS.list)
     .then((response) => {
       return response.json();
     })
@@ -89,7 +89,7 @@ function usingChainingPromiseInWrongWay() {
   showLoading();
 
   // Get from API
-  fetch(ENDPOINTS.list).then((response) => {
+  return fetch(ENDPOINTS.list).then((response) => {
     response
       .json()
       .then((response) => {
@@ -113,6 +113,7 @@ function usingChainingPromiseInWrongWay() {
  */
 async function usingAsyncAwait() {
   showLoading();
+
   try {
     // Get from API
     const musicResponse = await getAllMusics();
@@ -130,12 +131,10 @@ async function usingAsyncAwait() {
 (function () {
   setupDrawer();
 
-  // Fetching dengan tanpa async/await
-  usingChainingPromise();
+  // Fetching tanpa async/await
+  usingChainingPromise().then(setupOnlyOneAudioIsPlaying);
 
   // Fetching dengan async/await
   // await usingAsyncAwait();
-
-  // Only play single audio in a time
-  setupOnlyOneAudioIsPlaying();
+  // setupOnlyOneAudioIsPlaying();
 })();
