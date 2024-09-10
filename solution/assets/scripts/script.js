@@ -58,6 +58,7 @@ function populateWithInnerHTML(musics) {
   musicListContainer.innerHTML = elements.join('');
 }
 
+// 
 function usingChainingPromise() {
   showLoading();
 
@@ -104,9 +105,7 @@ function usingChainingPromiseInWrongWay() {
   });
 }
 
-/**
- * Memanfaatkan fitur async/await untuk menciptakan kode berasa synchronous
- */
+// Memanfaatkan fitur async/await untuk menciptakan kode berasa synchronous
 async function usingAsyncAwait() {
   showLoading();
 
