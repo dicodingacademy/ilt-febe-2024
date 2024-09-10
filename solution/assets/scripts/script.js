@@ -62,23 +62,12 @@ function usingChainingPromise() {
   showLoading();
 
   // Get from API
-  return fetch(ENDPOINTS.list)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      const data = response.data;
-
-      // Render musics to page
-      populateWithTemplate(data.musics);
-    })
+  return getAllMusics()
+    .then(populateWithTemplate) // render musics with template
     .catch((error) => {
       console.error('Something went error:', error);
     })
-    .finally(() => {
-      // Hide loading indicator
-      hideLoading();
-    });
+    .finally(hideLoading);
 }
 
 /**
