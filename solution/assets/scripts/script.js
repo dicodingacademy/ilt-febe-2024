@@ -58,19 +58,6 @@ function populateWithInnerHTML(musics) {
   musicListContainer.innerHTML = elements.join('');
 }
 
-// Menggunakan Promise then callback
-function usingChainingPromise() {
-  showLoading();
-
-  // Get from API
-  return getAllMusics()
-    .then(populateWithTemplate) // render musics with template
-    .catch((error) => {
-      console.error('Something went error:', error);
-    })
-    .finally(hideLoading);
-}
-
 /**
  * Hindari penulisan kode seperti ini.
  * Beberapa hal buruk ketika menerapkan kode seperti ini:
@@ -103,6 +90,19 @@ function usingChainingPromiseInWrongWay() {
         hideLoading();
       });
   });
+}
+
+// Menggunakan Promise then callback
+function usingChainingPromise() {
+  showLoading();
+
+  // Get from API
+  return getAllMusics()
+    .then(populateWithTemplate) // render musics with template
+    .catch((error) => {
+      console.error('Something went error:', error);
+    })
+    .finally(hideLoading);
 }
 
 // Memanfaatkan fitur async/await untuk menciptakan kode berasa synchronous
