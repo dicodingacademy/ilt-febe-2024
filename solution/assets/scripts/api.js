@@ -13,5 +13,5 @@ export async function getAllMusics() {
   const fetchResponse = await fetch(ENDPOINTS.list);
   const response = await fetchResponse.json();
 
-  return response.data;
+  return response.data.musics;
 }
