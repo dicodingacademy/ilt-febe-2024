@@ -58,7 +58,7 @@ function populateWithInnerHTML(musics) {
   musicListContainer.innerHTML = elements.join('');
 }
 
-// 
+// Menggunakan Promise then callback
 function usingChainingPromise() {
   showLoading();
 
