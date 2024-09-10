@@ -130,7 +130,7 @@ async function usingAsyncAwait() {
 (function () {
   setupDrawer();
 
-  // Fetching dengan async/await
+  // Fetching dengan tanpa async/await
   usingChainingPromise();
 
   // Fetching dengan async/await
