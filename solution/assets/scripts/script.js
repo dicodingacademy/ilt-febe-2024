@@ -58,38 +58,22 @@ function populateWithInnerHTML(musics) {
   musicListContainer.innerHTML = elements.join('');
 }
 
-function usingChainingPromise() {
-  showLoading();
-
-  // Get from API
-  fetch(ENDPOINTS.list)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      const data = response.data;
-
-      // Render musics to page
-      populateWithTemplate(data.musics);
-    })
-    .catch((error) => {
-      console.error('Something went error:', error);
-    })
-    .finally(() => {
-      // Hide loading indicator
-      hideLoading();
-    });
-}
-
 /**
- * Promise benar-benar mencegah penulisan kode asinkron dari callback hell.
- * Namun, cara berikut tidak berbeda dengan callback hell karena kode berpotensi menjorok ke dalam.
+ * Hindari penulisan kode seperti ini.
+ * Beberapa hal buruk ketika menerapkan kode seperti ini:
+ * 1. Fungsi memiliki lebih dari satu tanggung jawab, mendapatkan data dari network dan me-render data ke DOM.
+ * 2. Fungsi akan sulit diuji secara otomatis.
+ * 3. Sulit untuk dibaca. Tidak berebda dengan callback-hell karena berpontensi menjorok ke dalam.
+ * 
+ * Solusi:
+ * Buat fungsi untuk mendapatkan musics dari API secara terpisah.
+ * 
  */
 function usingChainingPromiseInWrongWay() {
   showLoading();
 
   // Get from API
-  fetch(ENDPOINTS.list).then((response) => {
+  return fetch(ENDPOINTS.list).then((response) => {
     response
       .json()
       .then((response) => {
@@ -108,17 +92,29 @@ function usingChainingPromiseInWrongWay() {
   });
 }
 
-/**
- * Memanfaatkan fitur async/await untuk menciptakan kode berasa synchronous
- */
+// Menggunakan Promise then callback
+function usingChainingPromise() {
+  showLoading();
+
+  // Get from API
+  return getAllMusics()
+    .then(populateWithTemplate) // render musics with template
+    .catch((error) => {
+      console.error('Something went error:', error);
+    })
+    .finally(hideLoading);
+}
+
+// Memanfaatkan fitur async/await untuk menciptakan kode berasa synchronous
 async function usingAsyncAwait() {
   showLoading();
+
   try {
     // Get from API
-    const musicResponse = await getAllMusics();
+    const musics = await getAllMusics();
 
     // Render musics to page
-    populateWithTemplate(musicResponse.musics);
+    populateWithTemplate(musics);
   } catch (error) {
     console.error('Something went error:', error);
   } finally {
@@ -130,12 +126,10 @@ async function usingAsyncAwait() {
 (function () {
   setupDrawer();
 
-  // Fetching dengan async/await
-  usingChainingPromise();
+  // Fetching tanpa async/await
+  usingChainingPromise().then(setupOnlyOneAudioIsPlaying);
 
   // Fetching dengan async/await
   // await usingAsyncAwait();
-
-  // Only play single audio in a time
-  setupOnlyOneAudioIsPlaying();
+  // setupOnlyOneAudioIsPlaying();
 })();
