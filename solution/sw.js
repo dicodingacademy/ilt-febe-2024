@@ -99,7 +99,7 @@ self.addEventListener('activate', (event) => {
  * see: https://web.dev/learn/pwa/serving/#stale-while-revalidate
  */
 self.addEventListener('fetch', (event) => {
-  const syncCache = async (request) => {
+  const fetchAndRevalidateCache = async (request) => {
     const response = await fetch(request);
 
     const cache = await caches.open(cacheName);
@@ -119,12 +119,12 @@ self.addEventListener('fetch', (event) => {
 
     if (cachedResponse) {
       // It is cached, but we want to update it so request but not await
-      await syncCache(request);
+      fetchAndRevalidateCache(request);
       return cachedResponse;
     }
 
     // It was not cached yet so request and cache it
-    return await syncCache(request);
+    return await fetchAndRevalidateCache(request);
   }
 
   event.respondWith(staleWhileRevalidateStrategy(event.request));
