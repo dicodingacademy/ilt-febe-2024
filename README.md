@@ -1,59 +1,41 @@
-# ILT FEBE 2024
-
-Repository ini dikhususkan untuk para instruktur ILT. Lakukanlah fork jika ingin melakukan perubahan kode dan memberikannya ke para siswa.
+# ILT Selangkah Lebih Maju dengan PWA
 
 ## Pengantar
 
-Selamat datang di ILT Hands-on Deck!
+Studi kasus ini ditujukan untuk sesi mengajar ILT dengan materi progressive web apps atau sering disingkat PWA. Ini adalah lanjutan dari ILT sebelumnya (AJAX) sehingga ia menggunakan topik yang sama. Kami namakan Calm Headphones.
 
-Repository ini menyimpan seluruh kebutuhan Hands-on demo dalam sesi ILT. Studi kasus yang diangkat dalam Hands-on demo adalah **Calm Headphones**. Ia adalah aplikasi yang menyediakan layanan untuk meningkatkan produktivitas dan fokus dalam bermeditasi.
+Kondisi aplikasi ini sudah fully responsive terhadap berbagai ukuran layar perangkat dan melakukan teknik AJAX untuk mendapatkan data dari server. Selanjutnya, kita akan membuat aplikasi tersebut memiliki sifat offline capability dan installable layaknya platform-specific app atau aplikasi native.
 
-Topik Calm Headphones akan selalu digunakan dari satu ILT ke ILT berikutnya. Oleh karena itu, kami pisahkan kemajuan aplikasi dalam branch terpisah.
+## Petunjuk
 
-## Daftar ILT
+Branch repository ini mengandung dua direktori yang bersifat starter dan solution project. Sebagai permulaan sesi praktik, instruktur dipersilakan untuk memanfaatkan project dalam direktori `starter`.
 
-Berikut adalah daftar topik hands-on yang akan diangkat per ILT.
+Dalam membangun PWA, ada tiga komponen penting, yaitu application shell, offline capability, dan installable. Untuk application shell, instruktur diperkenankan untuk mereviu saja karena sudah aplikasi sudah memilikinya (navigation bar).
 
-### ILT-1 Buat Website Pertamamu
+### Prerequisite tools
 
-Pengembangan Calm Headphones Landing Page menggunakan HTML dan CSS. Pengembangan layout-nya yang responsif akan melibatkan Flexible Box Layout atau flexbox.
+- Visual Studio Code
+- Google Chrome (atau chromium browser lainnya).
+- Perangkat mobile (opsional jika ingin mendemokan di mobile platform).
 
-Berikut gambaran hasil akhirnya.
+## Hasil Akhir Proyek
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/01-html-css) untuk menuju ke branch terkait.
+Hasil akhir dari kegiatan hands-on demo akan terlihat seperti berikut.
 
-### ILT-2 Membuat Websitemu Lebih Interaktif
+![Offline Capability for Calm Headphones](/pwa-offline-devtools.png?raw=true)
 
-Dalam tahap ini, aplikasi Calm Headphones menjadi interatif dengan menambahkan JavaScript dan DOM manipulation di dalamnya.
+![Calm Headphones on desktop platform](/pwa-desktop.png?raw=true)
 
-Berikut gambaran hasil akhirnya.
+![Calm Headphones on mobile platform](/pwa-mobile.jpeg?raw=true)
 
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/02-dom-manipulation-event) untuk menuju ke branch terkait.
+## Checklist Live Demo
 
-### ILT-3 Berkomunikasi dengan RESTful API
+Instruktur dapat memanfaatkan checklist live demo berikut agar sesi hands-on lebih terstruktur.
 
-ILT ini mengangkat topik Asynchronous JavaScript Request atau AJAX. Aplikasi Calm Headphones akan dihubungkan dengan server untuk mendapatkan data dari web server.
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/03-async-javascript-request) untuk menuju ke branch terkait.
-
-### ILT-4 Selangkah Lebih Maju dengan PWA
-
-Untuk meningkatkan pengalaman pengguna, aplikasi Calm Headphones akan menerapkan Progressive Web App (PWA).
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/04-progressive-web-app) untuk menuju ke branch terkait.
-
-### ILT-5 Menguji Aplikasi Web
-
-Potensi bug dan error bisa saja terjadi pada aplikasi apa pun. Oleh karena itu, pengujian aplikasi perlu dilaksanakan dalam tahap pengembangannya. Ada beberapa metode pengujian dan Calm Headphones akan menggunakan cara otomatis atau **Automated Testing**.
-
-Berikut gambaran hasil akhirnya.
-
-Anda bisa klik [link ini](https://github.com/dicodingacademy/ilt-febe-2024/tree/05-automated-testing) untuk menuju ke branch terkait.
-
-### ILT-6 JavaScript untuk Pengembangan di Sisi Server
-
-......
+- [ ] Menyiapkan dan membuka starter project yang telah disediakan.
+- [ ] Melakukan reviu dan menjalankan proyek. Bisa menggunakan [simple web server](https://simplewebserver.org/), [package http-server](https://www.npmjs.com/package/http-server), [live server VSCode extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) bagi pengguna VS Code.
+- [ ] Membuat berkas javascript service worker dan memasangnya dalam konteks web.
+  - [ ] Mempraktikkan update service worker.
+- [ ] Membangun offline capability dengan strategi cache first, network first, dan stale-while revalidate dari nol.
+- [ ] Memberikan kemampuan offline menggunakan Workbox. Bisa menggunakan [workbox CDN](https://developer.chrome.com/docs/workbox/modules/workbox-sw#using_workbox_sw_via_cdn) atau package manager.
+- [ ] Membuat manifest file untuk installable PWA.
