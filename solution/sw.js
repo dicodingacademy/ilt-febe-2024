@@ -22,7 +22,7 @@ const fileToCaches = [
   '/src/scripts/views/pages/HomePage.js',
   '/src/scripts/views/pages/NotFoundPage.js',
   '/src/scripts/views/presenters/HomePresenter.js',
-  'https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap',
 ];
 
 const cacheName = 'calm';
