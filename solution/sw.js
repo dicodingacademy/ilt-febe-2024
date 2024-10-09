@@ -1,18 +1,8 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js');
-
-// Set configuration for workbox
-workbox.setConfig({
-  debug: false,
-});
-
-// PRECACHING
-const { precacheAndRoute } = workbox.precaching;
-
 const fileToCaches = [
   '/',
   '/index.html',
-  '/src/styles/style.css',
   '/app.webmanifest',
+  '/src/styles/style.css',
   '/src/images/favicon.png',
   '/src/images/calm-hero.png',
   '/src/images/calm-logo.png',
@@ -32,40 +22,110 @@ const fileToCaches = [
   '/src/scripts/views/pages/HomePage.js',
   '/src/scripts/views/pages/NotFoundPage.js',
   '/src/scripts/views/presenters/HomePresenter.js',
+  'https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap',
 ];
-precacheAndRoute(fileToCaches);
 
-// RUNTIME CACHING
-const { registerRoute } = workbox.routing;
-const { StaleWhileRevalidate, CacheFirst } = workbox.strategies;
+const cacheName = 'calm';
 
-/* Google Fonts */
-registerRoute(
-  ({ request }) => {
-    return request.destination === 'font';
-  },
-  new CacheFirst({
-    cacheName: 'calm-fonts',
-  }),
-);
+self.addEventListener('install', (event) => {
+  console.log('SW: Installed');
 
-/* Calm Headphones API */
-const BASE_URL = 'https://calm-music-api.dicoding.dev';
+  const precache = async () => {
+    const cache = await caches.open(cacheName);
+    await cache.addAll(fileToCaches);
+  };
 
-registerRoute(
-  ({ request, url }) => {
-    return request.destination === 'image' && url.href.startsWith(BASE_URL);
-  },
-  new StaleWhileRevalidate({
-    cacheName: 'calm-api-images',
-  }),
-);
+  event.waitUntil(precache());
+});
 
-registerRoute(
-  ({ url }) => {
-    return url.href.startsWith(BASE_URL);
-  },
-  new StaleWhileRevalidate({
-    cacheName: 'calm-api',
-  }),
-);
+self.addEventListener('activate', (event) => {
+  console.log('SW: Activated');
+
+  const cleanCache = async () => {
+    const cacheNames = await caches.keys();
+
+    const deletePromises = cacheNames
+      .filter((name) => name !== cacheName)
+      .map((name) => caches.delete(name));
+    await Promise.all(deletePromises);
+  }
+
+  event.waitUntil(cleanCache());
+});
+
+/**
+ * Cache-first
+ * see: https://web.dev/learn/pwa/serving/#cache-first
+ */
+// self.addEventListener('fetch', (event) => {
+//   async function cacheFirstStrategy(request) {
+//     // Resources from chrome extensions cannot be cached by Cache Storage, so it will be thrown an error
+//     if (request.url.startsWith('chrome-extension')) {
+//       return await fetch(request);
+//     }
+//
+//     const cache = await caches.open(cacheName);
+//     const cachedResponse = await cache.match(request);
+//
+//     if (cachedResponse) {
+//       return cachedResponse;
+//     }
+//
+//     return await fetch(request);
+//   }
+//
+//   event.respondWith(cacheFirstStrategy(event.request));
+// });
+
+/**
+ * Network-first
+ * see: https://web.dev/learn/pwa/serving/#network-first
+ */
+// self.addEventListener('fetch', (event) => {
+//   async function networkFirstStrategy(request) {
+//     try {
+//       return await fetch(request);
+//     } catch {
+//       const cache = await caches.open(cacheName);
+//       return cache.match(request);
+//     }
+//   }
+//
+//   event.respondWith(networkFirstStrategy(event.request));
+// });
+
+/**
+ * Stale while revalidate
+ * see: https://web.dev/learn/pwa/serving/#stale-while-revalidate
+ */
+self.addEventListener('fetch', (event) => {
+  const syncCache = async (request) => {
+    const response = await fetch(request);
+
+    const cache = await caches.open(cacheName);
+    await cache.put(request, response.clone());
+
+    return response;
+  };
+
+  async function staleWhileRevalidateStrategy(request) {
+    // Resources from chrome extensions cannot be stored in Cache Storage, so it will be thrown an error
+    if (request.url.startsWith('chrome-extension')) {
+      return await fetch(request);
+    }
+
+    const cache = await caches.open(cacheName);
+    const cachedResponse = await cache.match(request);
+
+    if (cachedResponse) {
+      // It is cached, but we want to update it so request but not await
+      await syncCache(request);
+      return cachedResponse;
+    }
+
+    // It was not cached yet so request and cache it
+    return await syncCache(request);
+  }
+
+  event.respondWith(staleWhileRevalidateStrategy(event.request));
+});

@@ -5,7 +5,12 @@ export async function registerSW() {
   }
 
   try {
+    // Caching strategies from scratch
     const registration = await navigator.serviceWorker.register('/sw.js');
+
+    // Caching strategies with workbox
+    // const registration = await navigator.serviceWorker.register('/sw-workbox.js');
+
     registration.onupdatefound = () => {
       // Jika event handler ini dijalankan, itu artinya ada
       // pembaruan service worker yang sedang dipasang.
