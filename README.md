@@ -28,7 +28,7 @@ Agar instruktur dapat melakukan demo dengan lancar. Harap untuk melakukan hal-ha
 2. Checkout ke branch 05-automation-testing.
 3. Buka directory `starter` dengan menggunakan Visual Studio Code.
 4. Pada terminal, jalankan `npm install`.
-5. Setup playwright dengan perinah `npx playwright install`.
+5. Setup playwright dengan perintah `npx playwright install`.
 6. Lengkapi berkas testing yang ada (ditandai dengan komentar @TODO).
 
 ## Hasil Akhir Proyek
@@ -39,7 +39,7 @@ Berikut hasil akhir dari pengujian Homepage dan HomePresenter dengan menggunakan
 ```shell
 npm test
 
-> ilt4-pwa@1.0.0 test
+> ilt5-automation-testing@1.0.0 test
 > jest
 
  PASS  tests/HomePresenter.test.js
@@ -56,7 +56,7 @@ Berikut hasil akhir dari pengujian end-to-end test dengan menggunakan CodeceptJS
 ```shell
 npm run e2e
 
-> ilt4-pwa@1.0.0 e2e
+> ilt5-automation-testing@1.0.0 e2e
 > codeceptjs run --steps
 
 CodeceptJS v3.6.7 #StandWithUkraine
