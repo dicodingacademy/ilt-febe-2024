@@ -9,8 +9,9 @@ Dalam mengimplementasikan testing, kami sudah menyediakan beberapa hal.
 1. Package dependencies yang dibutuhkan untuk melakukan pengujian.
 2. Konfigurasi yang dibutuhkan untuk melakukan pengujian.
 3. npm runner `test` untuk pengujian `jest` dan `e2e` untuk pengujian `codeceptjs`.
-3. Berkas pengujian yang perlu dilengkapi oleh instruktur (diberi tanda @TODO).
-4. Solusi akhir dari implementasi automation pada folder `/solutions`.
+4. Berkas `tests/mock.js` yang digunakan untuk mocking fetch selama pengujian menggunakan Jest.
+5. Berkas pengujian yang perlu dilengkapi oleh instruktur (diberi tanda @TODO).
+6. Solusi akhir dari implementasi automation pada folder `/solutions`.
 
 
 ### Prerequisite tools
