@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "http-server --port 3000 ."
+    "serve": "http-server --port 3000 .",
+    "test": "jest",
+    "e2e": "codeceptjs run --steps"
   },
   "keywords": [],
   "author": "",
