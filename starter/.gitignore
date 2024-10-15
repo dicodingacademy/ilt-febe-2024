@@ -16,3 +16,7 @@ node_modules/
 
 ### Additional directories
 dist
+
+### Test output
+coverage
+e2e/output
