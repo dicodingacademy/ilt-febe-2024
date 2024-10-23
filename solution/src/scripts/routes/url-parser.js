@@ -10,7 +10,7 @@ function combineUrlSegments(urlSegments) {
   let url = '';
 
   if (urlSegments.resource) {
-    url = url.concat(urlSegments.resource);
+    url = url.concat(`/${urlSegments.resource}`);
   }
 
   return url || '/';

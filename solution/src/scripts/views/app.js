@@ -28,7 +28,7 @@ class App {
 
     if (!page) {
       window.location.hash = '/404';
-      page = routes['/404'];
+      return;
     }
 
     this._content.innerHTML = await page.render();

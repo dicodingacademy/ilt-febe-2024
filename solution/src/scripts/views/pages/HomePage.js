@@ -1,12 +1,12 @@
 import { HomePresenter } from '../presenters/HomePresenter.js';
-import { generateMusicItemUsingInnerHTML } from '../../utils.js';
+import { generateMusicItemTemplate } from '../../utils.js';
 
-class HomePage {
+export default class HomePage {
   async render() {
     return `
-      <section class="hero">
+      <section class="hero-container">
         <article class="hero__content">
-          <h2>Be Focus and Productive</h2>
+          <h2 class="section-title">Be Focus and Productive</h2>
           <p>Not just an ordinary headphones. It's designed for meditation.</p>
           <button>Learn more</button>
         </article>
@@ -16,13 +16,11 @@ class HomePage {
         </article>
       </section>
   
-      <section>
+      <section class="musics-container">
         <h2 class="section-title">Choose Your Productive Music Favorite</h2>
-  
-        <div id="musiclist" class="music-list"></div>
-        <div id="loader" class="text-center">
-          <span class="loader"></span>
-        </div>
+
+        <div id="musics" class="musics"></div>
+        <div id="loader" class="loader"></div>
       </section>
     `;
   }
@@ -31,18 +29,26 @@ class HomePage {
     const presenter = new HomePresenter(this);
 
     await presenter.getMusics();
-
-    // Only play single audio in a time
-    this._setupOnlyOneAudioIsPlaying();
   }
 
   populateMusics(musics) {
-    const elements = musics.map((music) => {
-      return generateMusicItemUsingInnerHTML(music);
-    });
+    if (musics.length <= 0) {
+      document.getElementById('musics').innerHTML = 'Music kosong';
+      return;
+    }
 
-    const musicListContainer = document.getElementById('musiclist');
-    musicListContainer.innerHTML = elements.join('');
+    const html = musics
+      .map((music) => generateMusicItemTemplate(music))
+      .join('');
+
+    document.getElementById('musics').innerHTML = `
+      <div id="musiclist" class="musics-list">
+        ${html}
+      </div>
+    `;
+
+    // Only play single audio in a time
+    this._setupOnlyOneAudioIsPlaying();
   }
 
   _setupOnlyOneAudioIsPlaying() {
@@ -66,15 +72,13 @@ class HomePage {
     });
   }
 
-  showLoading() {
-    const musicsLoader = document.getElementById('loader');
-    musicsLoader.style.display = 'block';
+  showLoading(selector) {
+    const loader = document.querySelector(selector);
+    loader.style.display = 'block';
   }
 
-  hideLoading() {
-    const musicsLoader = document.getElementById('loader');
-    musicsLoader.style.display = 'none';
+  hideLoading(selector) {
+    const loader = document.querySelector(selector);
+    loader.style.display = 'none';
   }
 }
-
-export default HomePage;

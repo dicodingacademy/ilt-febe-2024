@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "http-server --port 3000 ."
+    "serve": "http-server --port 8080 ."
   },
   "keywords": [],
   "author": "",

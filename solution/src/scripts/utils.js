@@ -22,24 +22,20 @@ export async function registerSW() {
   }
 }
 
-export function generateMusicItemUsingInnerHTML({ id, artLink, title, signature, audioLink }) {
+export function generateMusicItemTemplate({ id, artLink, title, signature, audioLink }) {
   return `
-    <article class="music-list__item" data-musicid="${id}">
-      <div class="card">
-        <div class="card-image">
-          <img id="musicimage" src="${artLink}" alt="${title}" />
-        </div>
-        <div class="card-body">
-          <h3 id="musictitle" class="card-body__title">${title}</h3>
-          <div id="musicsignature" class="card-body__copyright">${signature}</div>
-          <audio
-            id="musicaudio"
-            class="music-list__item__audio"
-            controls
-            src="${audioLink}"
-            preload="none"
-          ></audio>
-        </div>
+    <article class="music-item" data-musicid="${id}">
+      <img id="musicimage" class="music-item__image" src="${artLink}" alt="${title}" />
+      <div class="music-item__body">
+        <h3 id="musictitle" class="music-item__title">${title}</h3>
+        <div id="musicsignature" class="music-item__signature">${signature}</div>
+        <audio
+          id="musicaudio"
+          class="music-item__audio"
+          src="${audioLink}"
+          preload="none"
+          controls
+        ></audio>
       </div>
     </article>
   `;
