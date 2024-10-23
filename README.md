@@ -18,6 +18,10 @@ Dalam membangun PWA, ada tiga komponen penting, yaitu application shell, offline
 - Google Chrome (atau chromium browser lainnya).
 - Perangkat mobile (opsional jika ingin mendemokan di mobile platform).
 
+### Disclaimer Lighthouse sebagai Audit Tools
+
+Saat ini, Lighthouse sudah tidak menyertakan kategori "Progressive Web App" untuk melakukan auditing aplikasi PWA. Sebagai alternatif, instruktur bisa memanfaatkan browser developer tools untuk melakukan debugging aplikasi PWA di Google Chrome. Silakan simak artikel [Debug Progressive Web Apps](https://developer.chrome.com/docs/devtools/progressive-web-apps).
+
 ## Hasil Akhir Proyek
 
 Hasil akhir dari kegiatan hands-on demo akan terlihat seperti berikut.
