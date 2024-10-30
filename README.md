@@ -1,16 +1,15 @@
-# ILT Menguji Aplikasi Web
+# ILT Pengembangan di Sisi Server dengan JavaScript
 
 ## Pengantar
-Project ini digunakan untuk demonstrasi selama kegiatan ILT Menguji Aplikasi Web.
-Mengangkat studi kasus yang sama dengan ILT sebelumnya yaitu, Calm Headphones.
+Project ini digunakan untuk demonstrasi selama kegiatan ILT Pengembangan di Sisi Server dengan JavaScript.
+Mengangkat studi kasus RESTful API sederhana aplikasi pengelola data produk.
 
-Dalam mengimplementasikan testing, kami sudah menyediakan beberapa hal.
+Dalam mengimplementasikan demo ini, kami sudah menyiapkan beberapa hal seperti.
 
-1. Package dependencies yang dibutuhkan untuk melakukan pengujian.
-2. Konfigurasi yang dibutuhkan untuk melakukan pengujian.
-3. npm runner `test` untuk pengujian `jest` dan `e2e` untuk pengujian `codeceptjs`.
-4. Berkas `tests/mock.js` yang digunakan untuk mocking fetch selama pengujian menggunakan Jest.
-5. Berkas pengujian yang perlu dilengkapi oleh instruktur (diberi tanda @TODO).
+1. Package dependencies yang dibutuhkan untuk melakukan demo.
+2. Konfigurasi yang dibutuhkan untuk melakukan demo RESTful API sederhana.
+3. Script npm `start` untuk menjalankan project, `migrate` untuk menjalankan migration, dan `lint` untuk menjalankan linter eslint.
+5. Berkas yang perlu dilengkapi oleh instruktur (diberi tanda @TODO).
 6. Solusi akhir dari implementasi automation pada folder `/solutions`.
 
 
@@ -18,6 +17,7 @@ Dalam mengimplementasikan testing, kami sudah menyediakan beberapa hal.
 
 - Visual Studio Code
 - Node.js Latest LTS
+- Database PostgreSQL local atau di Supabase
 - Google Chrome (atau chromium browser lainnya).
 
 
@@ -25,71 +25,45 @@ Dalam mengimplementasikan testing, kami sudah menyediakan beberapa hal.
 
 Agar instruktur dapat melakukan demo dengan lancar. Harap untuk melakukan hal-hal berikut terlebih dahulu.
 1. Clone repository ini.
-2. Checkout ke branch 05-automation-testing.
+2. Checkout ke branch 06-backend-javascript.
 3. Buka directory `starter` dengan menggunakan Visual Studio Code.
 4. Pada terminal, jalankan `npm install`.
-5. Setup playwright dengan perintah `npx playwright install`.
-6. Lengkapi berkas testing yang ada (ditandai dengan komentar @TODO).
+6. Lengkapi berkas yang ditandai dengan komentar @TODO.
 
 ## Hasil Akhir Proyek
 
-### Homepage dan HomePresenter Test dengan menggunakan Jest
+### Endpoint Menambahkan Data Produk
 
-Berikut hasil akhir dari pengujian Homepage dan HomePresenter dengan menggunakan Jest
-```shell
-npm test
+- Method: POST
 
-> ilt5-automation-testing@1.0.0 test
-> jest
+- URL: /products 
 
- PASS  tests/HomePresenter.test.js
- PASS  tests/HomePage.test.js
-
-Test Suites: 2 passed, 2 total
-Tests:       4 passed, 4 total
-Snapshots:   0 total
-Time:        1.479 s, estimated 2 s
-Ran all test suites.
+- Body request:
+```
+{
+    "name": "Running Shoes",
+    "description": "Sepatu Lari",
+    "category": "Sepatu",
+    "price": "500000",
+    "brand": "Lokal"
+}
 ```
 
-Berikut hasil akhir dari pengujian end-to-end test dengan menggunakan CodeceptJS
-```shell
-npm run e2e
-
-> ilt5-automation-testing@1.0.0 e2e
-> codeceptjs run --steps
-
-CodeceptJS v3.6.7 #StandWithUkraine
-Using test root "/home/dimas/JavaScriptProject/ilt-febe-2024/solutions"
-
-Homepage --
-  showing homepage with all musics list
-    I am on page "/"
-    I see "Be Focus and Productive"
-    I see "Not just an ordinary headphones. It's designed for meditation."
-    I see "Choose Your Productive Music Favorite"
-    I wait for element ".music-list__item", 5
-    I see "Coverless Book"
-    I see "Lofi Orchestra"
-    I see "For a Dream"
-    I see "Good Night"
-  ✔ OK in 1767ms
-
-Not Found Page --
-  showing not found page when visit unknown page
-    I am on page "/#/it-should-not-found"
-    I see "Page Not Found (404)"
-  ✔ OK in 436ms
-
-
-  OK  | 2 passed   // 3s
+- Body response:
+```
+{
+    "status": "success",
+    "message": "Product berhasil ditambahkan",
+    "data": {
+        "productId": "FjSpHZ-KKL6Id1Ja"
+    }
+}
 ```
 
 ## Checklist Live Demo
 
 Instruktur dapat memanfaatkan checklist live demo berikut agar sesi hands-on lebih terstruktur.
 
-- [ ] Menulis pengujian `tests/HomePage.test.js`.
-- [ ] Menulis pengujian `tests/HomePresenter.test.js`
-- [ ] Menulis pengujian end-to-end `e2e/Homepage.test.js`
-- [ ] Menulis pengujian end-to-end `e2e/NotFoundPage.test.js`
+- [ ] Menambahkan route baru di `src/routes.js`.
+- [ ] Menambahkan satu handler di `src/handler.js`
+- [ ] Menambahkan satu function untuk menyimpan data produk di `src/ProductService.js`
