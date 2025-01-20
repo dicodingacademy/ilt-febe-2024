@@ -96,7 +96,7 @@ main .hero {
 
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 30px;
 }
 
 main .hero .hero__content {
@@ -159,15 +159,15 @@ footer .copyright {
 }
 
 @media screen and (width <= 750px) {
-  header {
+  .header-content {
     justify-content: space-between;
   }
 
-  header .drawer-button {
+  .header-content .drawer-button {
     display: inline-block;
   }
 
-  header .navlist {
+  .header-content .navlist {
     background-color: white;
     min-height: 100vh;
     width: 200px;
@@ -180,12 +180,12 @@ footer .copyright {
     transition: all 300ms ease-in-out;
   }
 
-  header .navlist li,
-  header .navlist li a {
+  .header-content .navlist li,
+  .header-content .navlist li a {
     display: block;
   }
 
-  header .navlist.open {
+  .header-content .navlist.open {
     transform: translateX(0);
     box-shadow: 2px 0 6px 0 #777;
   }
