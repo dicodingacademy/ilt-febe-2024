@@ -1,3 +1,6 @@
+// CSS imports
+import '../styles/style.css';
+
 import {
   getAllMusics,
   generateMusicItemUsingTemplate,
